@@ -43,10 +43,13 @@ public class Menu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jDesktopPane1.setFocusTraversalPolicyProvider(true);
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 1060, 610));
 
         jpControlPanel.setBackground(new java.awt.Color(153, 153, 153));
         jpControlPanel.setPreferredSize(new java.awt.Dimension(190, 500));
@@ -97,10 +100,16 @@ public class Menu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jpControlPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 40, 30));
+        jpControlPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 40, 30));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/factura-aprobada.png"))); // NOI18N
         jButton2.setToolTipText("");
+        jButton2.setOpaque(false);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -110,6 +119,7 @@ public class Menu extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/mapa (1).png"))); // NOI18N
         jButton3.setToolTipText("");
+        jButton3.setOpaque(false);
         jpControlPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 40, 30));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/factura.png"))); // NOI18N
@@ -143,24 +153,16 @@ public class Menu extends javax.swing.JFrame {
         });
         jpControlPanel.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 40, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1)
-                    .addComponent(jpControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/usuario (8).png"))); // NOI18N
+        jButton8.setToolTipText("");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jpControlPanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 40, 30));
+
+        getContentPane().add(jpControlPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -169,10 +171,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jControlpanelMouseClicked
-Vivienda v = new Vivienda(); Dueno d = new Dueno(); Fresidentes fr = new Fresidentes();
-Membresias mb = new Membresias();
+Vivienda v = new Vivienda(); Dueno d = new Dueno(); Fresidentes fr = new Fresidentes();  FrVisitas f=new FrVisitas();
+Membresias mb = new Membresias(); Registrar r=new Registrar();
     public void limpiarformularios(){
-        v.dispose(); d.dispose(); fr.dispose();mb.dispose();
+        v.dispose(); d.dispose(); fr.dispose();mb.dispose(); f.dispose(); r.dispose();
     }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -208,6 +210,18 @@ this.limpiarformularios();
       this.limpiarformularios();
         mb = new Membresias();this.jDesktopPane1.add(mb);mb.setVisible(true);mb.setTitle("MEMBRESIAS");mb.show();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+         this.limpiarformularios();
+        f = new FrVisitas();this.jDesktopPane1.add(f);f.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        this.limpiarformularios();
+        r=new Registrar();this.jDesktopPane1.add(r);r.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +266,7 @@ this.limpiarformularios();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jControlpanel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel3;

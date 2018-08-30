@@ -13,6 +13,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +28,7 @@ public class Visitas {
     private String Descripcion;
     private Time HoraVisita;
     private String FechaVisita;
-    private int NomResidente;
+    private int IdResidente;
     
     
     
@@ -36,15 +37,15 @@ public class Visitas {
         this.cn = cn;
     }
 
-    public void setNomResidente(int NomResidente) {
-        this.NomResidente = NomResidente;
+    public void setIdResidente(int NomResidente) {
+        this.IdResidente = NomResidente;
     }
     public Connection getCn() {
         return cn;
     }
 
-    public int getNomResidente() {
-        return NomResidente;
+    public int getIdResidente() {
+        return IdResidente;
     }
    
     /**
@@ -135,59 +136,66 @@ public class Visitas {
      * @return the IdUsuario
      */
     
-
-
-
-
-public void cargarVisitas(){
+    public Visitas(){
+        cn = new Conexion().conectar();
+    }
+    
+    public int idResidente(Object nombre){
+        int id = 0;
         try{
-            //Realizar la consulta SELECT
-            String sql = "SELECT NomVisitante,DUIVisitante,Descripcion,HoraVisita,FechaVisita,NomResidente FROM Visitas";
-            Statement cmd = cn.createStatement();
+            String sql = "SELECT IdResidente FROM Residentes WHERE Nombre = '"+nombre+"'";
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                id = rs.getInt("IdResidente");
+            }
             
-            ResultSet rs = cmd.executeQuery(sql);
-            ResultSetMetaData rsMd = rs.getMetaData();
-           int numeroColumna = rsMd.getColumnCount();
-           
-           DefaultTableModel modelo = new DefaultTableModel();
-//           Principal.tblVisitas.setModel(modelo);
-           for(int x=1;x<=numeroColumna; x++){
-               modelo.addColumn(rsMd.getColumnLabel(x));
-           }
-           
-           while(rs.next()){
-               Object []fila = new Object[numeroColumna];
-               
-               for(int i = 0; i<numeroColumna; i++){
-                   fila[i] = rs.getObject(i+1);
-               }
-               
-               modelo.addRow(fila);
-           }
-           cmd.close();
-           
         }
         catch(Exception e){
             System.out.println(e.toString());
         }
+        return id;
     }
-
-public boolean guardarVisitas(){
+    
+    
+    
+    public DefaultComboBoxModel Residentes(){
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try{
+            String sql = "SELECT Nombre FROM Residentes";
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            modelo.addElement("[ Residente ]");
+            while(rs.next()){
+                modelo.addElement(rs.getString("Nombre"));
+                
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        return modelo;
+    }
+    
+    
+    public boolean  guardarVisita(){
         
        boolean res = false;
         try{
 //            Realizar la consulta INSERT
-            String sql = "INSERT INTO Visitas(NomVisitante,DUIVisitante,Descripcion,HoraVisita,FechaVisita,NomResidente) "
-                        + "VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO Visitas(NomVisitante,DUIVisitante,Descripcion,HoraVisita,FechaVisita,IdResidente)"
+                        + "VALUES (?,?,?,?,?,?)";
             PreparedStatement cmd = cn.prepareStatement(sql);
-          
+            
             cmd.setString(1, NomVisitante);
             cmd.setString(2, DUIVisitante);
             cmd.setString(3, Descripcion);
             cmd.setTime(4, HoraVisita);
-            cmd.setString(4, FechaVisita);
-            cmd.setInt(4, NomResidente);
+            cmd.setString(5, FechaVisita);
+            cmd.setInt(6, IdResidente);
             
+           
             
             if(!cmd.execute()){
                 res = true;
@@ -200,6 +208,7 @@ public boolean guardarVisitas(){
             e.printStackTrace();
         }
         return res;        
+    }
     }
   
 
@@ -216,6 +225,5 @@ public boolean guardarVisitas(){
 
     
     
-    
-}
+
 

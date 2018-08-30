@@ -3,11 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
      Membresia."TipoMembresia" AS Membresia_TipoMembresia
 FROM
-     "dbo"."Membresia" Membresia]]>
+     Membresia]]>
 	</queryString>
 	<field name="Membresia_TipoMembresia" class="java.lang.String"/>
 	<group name="Membresia_TipoMembresia">
@@ -17,9 +17,9 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="39" splitType="Stretch">
 			<staticText>
-				<reportElement x="126" y="30" width="266" height="20" backcolor="#CCCCFF" uuid="1254b627-bb9c-451e-b0d2-fd996e7de880"/>
+				<reportElement x="125" y="12" width="266" height="20" backcolor="#CCCCFF" uuid="1254b627-bb9c-451e-b0d2-fd996e7de880"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
@@ -28,34 +28,33 @@ FROM
 		</band>
 	</title>
 	<pageHeader>
-		<band height="78" splitType="Stretch">
-			<image>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="0" y="0" width="146" height="61" uuid="c9a91537-77fb-4568-801e-b9a2068ef40c"/>
-				<imageExpression><![CDATA["C:\\Users\\juan\\Desktop\\imagen usb negra 32G\\joel\\trabajo\\trabajo\\ResidentialProject\\src\\Imagenes\\casas.jpg"]]></imageExpression>
-			</image>
-		</band>
+		<band height="71" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
-			<staticText>
-				<reportElement x="175" y="26" width="124" height="20" uuid="43310a81-4058-4f52-a53f-93fe13084b66"/>
-				<text><![CDATA[TIPOS DE MEMBRESIA]]></text>
-			</staticText>
-		</band>
+		<band height="21" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="29" splitType="Stretch">
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="124" height="20" uuid="43310a81-4058-4f52-a53f-93fe13084b66"/>
+				<text><![CDATA[TIPOS DE MEMBRESIA]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="186" y="0" width="100" height="20" uuid="f52e5d34-0781-4908-a63e-240b5446ec9c"/>
+				<reportElement x="1" y="20" width="236" height="20" uuid="56e51771-4854-40f8-8c70-0dfa67dcaea9"/>
 				<textFieldExpression><![CDATA[$F{Membresia_TipoMembresia}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="71" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="445" y="34" width="100" height="20" uuid="81c57a0b-b131-45ce-adcb-b080ef9e884c"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

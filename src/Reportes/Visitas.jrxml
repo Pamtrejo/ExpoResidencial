@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Visitas" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="65a2a036-4fae-4bbe-a5f6-0681b089ab60">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="4"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from Visitas]]>
+	</queryString>
+	<field name="IdVisita" class="java.lang.Integer"/>
+	<field name="NomVisitante" class="java.lang.String"/>
+	<field name="DUIVisitante" class="java.lang.String"/>
+	<field name="Descripcion" class="java.lang.String"/>
+	<field name="HoraVisita" class="java.sql.Time"/>
+	<field name="FechaVisita" class="java.lang.String"/>
+	<field name="IdResidente" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="771" y="-211" width="572" height="34" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="1cab0bdd-7197-4ffd-b06c-f08136f687e3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bodoni MT Black" size="18"/>
+				</textElement>
+				<text><![CDATA[Visitas]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="114" y="59" width="100" height="20" uuid="86e11555-c534-49cf-befe-873e2d4db06f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="59" width="114" height="20" uuid="2cf9f341-4ccd-4406-bb85-0376786d67a8"/>
+				<text><![CDATA[Fecha de elaboracion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="59" width="114" height="20" uuid="69b132ae-a81b-4ffa-8e91-27d7f58cf4f9"/>
+				<text><![CDATA[Usuario:Pamela Trejo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="34" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="6e915290-cc0d-42a9-b481-615902391544"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bodoni MT Black" size="18"/>
+				</textElement>
+				<text><![CDATA[Visitas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="47" width="572" height="1" uuid="8e404ef5-799f-46f2-a8b0-82afac2ac4a4"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="249" height="17" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="dc6ff530-0487-459d-9c08-f810358bfb91"/>
+				<textElement textAlignment="Left">
+					<font fontName="Bodoni MT" size="13"/>
+				</textElement>
+				<text><![CDATA[Visitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="263" y="0" width="103" height="17" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="37010639-e6c4-4021-beac-42fb0d4b1c99"/>
+				<textElement textAlignment="Left">
+					<font fontName="Bodoni MT" size="13"/>
+				</textElement>
+				<text><![CDATA[DUI Visitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="372" y="0" width="69" height="17" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="3035dfd4-6fba-4588-8416-19b9f4c89b06"/>
+				<textElement textAlignment="Left">
+					<font fontName="Bodoni MT" size="13"/>
+				</textElement>
+				<text><![CDATA[Hora Visita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="466" y="0" width="84" height="17" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="4bc58bad-c9c2-4684-a6e1-1f597cf20aa5"/>
+				<textElement textAlignment="Left">
+					<font fontName="Bodoni MT" size="13"/>
+				</textElement>
+				<text><![CDATA[Fecha creacion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="27" width="100" height="20" uuid="6fcf5a08-4a80-4661-bf59-9c71e3268e2b"/>
+				<textFieldExpression><![CDATA[$F{DUIVisitante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="27" width="78" height="20" uuid="04706da2-29d4-46bd-93db-59fa66d7eaa9"/>
+				<textFieldExpression><![CDATA[$F{HoraVisita}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="466" y="27" width="100" height="20" uuid="13da1d90-bf10-45ff-ae4c-a812501a6e13"/>
+				<textFieldExpression><![CDATA[$F{FechaVisita}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="27" width="100" height="20" uuid="2b7a39cc-b556-42c3-81a2-1515050fc9bd"/>
+				<textFieldExpression><![CDATA[$F{NomVisitante}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="466" y="16" width="100" height="20" uuid="b6651af9-0804-4370-b75d-d709445b8989"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

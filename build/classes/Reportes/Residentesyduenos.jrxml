@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Residentesyduenos" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="78c22a23-92af-4b29-a9b8-1420937e8643">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="100"/>
+	<queryString>
+		<![CDATA[select * from Residentes]]>
+	</queryString>
+	<field name="IdResidente" class="java.lang.Integer"/>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Descripcion" class="java.lang.String"/>
+	<field name="IdMembresia" class="java.lang.Integer"/>
+	<field name="IdTipoResidente" class="java.lang.Integer"/>
+	<variable name="IdResidente_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{IdResidente}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="34" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="5332e4d4-9cb2-48e4-b4ff-5a1531869700"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bodoni MT Black" size="18"/>
+				</textElement>
+				<text><![CDATA[Residentes ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="59" width="114" height="20" uuid="6cb7795f-1002-488d-9bd1-50f532271f16"/>
+				<text><![CDATA[Usuario:Pamela Trejo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="114" height="20" uuid="fe327011-72b6-4f48-9f50-b2cbbb90b517"/>
+				<text><![CDATA[Fecha de elaboracion:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="114" y="59" width="100" height="20" uuid="2de5f978-44d4-43bd-8136-aa17d7a63a76"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="17" forecolor="#FFFFFF" backcolor="#6E0F1B" uuid="14c8c8d0-8847-45e5-b947-1f8198920283"/>
+				<textElement textAlignment="Left">
+					<font fontName="Bodoni MT" size="13"/>
+				</textElement>
+				<text><![CDATA[Residente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="7113c4c4-08e7-4974-96eb-a00d94c3870f"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="41" width="100" height="20" uuid="4dff768f-6c7b-40af-87d4-0bb352d93a7d"/>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="61" width="572" height="1" uuid="51c337db-f198-48d4-a92f-b3a1b2e08453"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="106" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="472" y="7" width="100" height="20" uuid="43d2df94-bec1-4573-82ad-dee99f41c134"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="123" splitType="Stretch"/>
+	</summary>
+</jasperReport>
