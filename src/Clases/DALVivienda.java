@@ -29,7 +29,7 @@ public class DALVivienda extends Conexion{
             
             try {
                 
-                String sql = "SELECT * FROM vw_Viviendas";
+                String sql = "SELECT * FROM Viviendas";
                 PreparedStatement cmd = cn.prepareStatement(sql);
                 
         ResultSet rs = cmd.executeQuery();
@@ -39,8 +39,11 @@ public class DALVivienda extends Conexion{
                             new Viviendas(rs.getInt("idVivienda")
                                     ,rs.getString("Estado")
                                     ,rs.getInt("IdResidente")
-                                    ,rs.getInt("IdMembresia")
-                                    ,rs.getInt("IdDueno"));
+                                    ,rs.getInt("IdDueno")
+                            ,rs.getString("Direccion")
+                            ,rs.getDouble("Cuota")
+                            ,rs.getString("Dueno")
+                            ,rs.getString("Residente"));
                                        
             
              listaViviendas.add(vivienda);
@@ -68,7 +71,7 @@ public class DALVivienda extends Conexion{
             
             try {
                 
-                String sql = "SELECT * FROM vw_Viviendas WHERE idVivienda = ?";
+                String sql = "SELECT * FROM Viviendas WHERE idVivienda = ?";
                 PreparedStatement cmd = cn.prepareStatement(sql);
                 cmd.setInt(1, Id);
                 
@@ -79,12 +82,15 @@ public class DALVivienda extends Conexion{
                             new Viviendas(rs.getInt("idVivienda")
                                     ,rs.getString("Estado")
                                     ,rs.getInt("IdResidente")
-                                    ,rs.getInt("IdMembresia")
-                                    ,rs.getInt("IdDueno"));
-                                       
+                                    ,rs.getInt("IdDueno")
+                            ,rs.getString("Direccion")
+                            ,rs.getDouble("Cuota")
+                            ,rs.getString("Dueno")
+                            ,rs.getString("Residente"));
             
              listaViviendas.add(vivienda);
             } 
+       
         }
         catch (Exception e) {
         System.out.println(e.toString());
@@ -97,6 +103,13 @@ public class DALVivienda extends Conexion{
     
         return listaViviendas;
     }
+        
+        
+        public void guardarvivienda(){
+           /* String strsql ="insert into viviendas values(?,?,?,?,?,?)";
+            PreparedStatement cmd = cn.prepareStatement(strsql);
+           */
+        }
 
     
 }

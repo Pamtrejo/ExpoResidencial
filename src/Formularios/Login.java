@@ -10,6 +10,7 @@ import AppPackage.AnimationClass;
 import Clases.Conexion;
 import Clases.DAL;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,7 +28,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+Conexion cn = new Conexion(); DAL da = new DAL();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -334,11 +335,13 @@ public void jPanelYDown(final int start, final int stop, final int delay, final 
                 
                 JOptionPane.showMessageDialog(null,"Campos Vacios", "ERROR",JOptionPane.ERROR_MESSAGE);
             }
-            if(1==DAL.Validaracceso(Conexion.conectar(), jtxtUsuario.getText(), jtxtContraseña.getText())){
+            
+            if(da.Validaracceso(cn.conectar(), jtxtUsuario.getText(), jtxtContraseña.getText())==1){
                 
-        this.setVisible(false);
-        new Principal(jtxtUsuario.getText()).setVisible(true); // Main Form to show after the Login Form..
-    
+        //this.setVisible(false);
+        //new Principal(jtxtUsuario.getText()).setVisible(true); // Main Form to show after the Login Form..
+     Menu m = new Menu();m.setVisible(true); m.setExtendedState(MAXIMIZED_BOTH);
+        m.setLocationRelativeTo(null);
             }
             else{
              JOptionPane.showMessageDialog(null,"Usuario o Password incorrectos", "ERROR",JOptionPane.ERROR_MESSAGE);

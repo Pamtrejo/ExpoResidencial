@@ -62,16 +62,11 @@ public class Viviendas {
     /**
      * @return the IdMembresia
      */
-    public int getIdMembresia() {
-        return IdMembresia;
-    }
-
+   
     /**
      * @param IdMembresia the IdMembresia to set
      */
-    public void setIdMembresia(int IdMembresia) {
-        this.IdMembresia = IdMembresia;
-    }
+   
 
     /**
      * @return the IdDueno
@@ -87,22 +82,60 @@ public class Viviendas {
         this.IdDueno = IdDueno;
     }
 
-    public Viviendas(int IdVivienda, String Estado, int IdResidente, int IdMembresia, int IdDueno) {
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
+    }
+
+    public double getCuota() {
+        return Cuota;
+    }
+
+    public void setCuota(double Cuota) {
+        this.Cuota = Cuota;
+    }
+
+    public String getDueno() {
+        return Dueno;
+    }
+
+    public void setDueno(String Dueno) {
+        this.Dueno = Dueno;
+    }
+
+    public String getResidente() {
+        return Residente;
+    }
+
+    public void setResidente(String Residente) {
+        this.Residente = Residente;
+    }
+    
+    
+
+    public Viviendas(int IdVivienda, String Estado, int IdResidente, int IdDueno, String Direccion,double Cuota, String Dueno,String Residente) {
         this.IdVivienda = IdVivienda;
         this.Estado = Estado;
         this.IdResidente = IdResidente;
-        this.IdMembresia = IdMembresia;
         this.IdDueno = IdDueno;
+        this.Direccion = Direccion;
+        this.Estado = Estado;
+        this.Cuota = Cuota;
+        this.Dueno = Dueno;
+        this.Residente=Residente;
     }
     
     
     private int IdVivienda;
     private String Estado;
     private int IdResidente;
-    private int IdMembresia;
     private int IdDueno;
-    
-    
-    
+     private String Direccion;
+     private double Cuota;
+    private String Dueno;
+    private String Residente;
     
 }

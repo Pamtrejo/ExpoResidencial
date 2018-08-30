@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -77,7 +78,7 @@ public static int GetPrimeraVez(Connection con, String User) throws SQLException
     return retorno;
 }
 
-public static int Validaracceso(Connection con, String User, String Password) throws SQLException {  
+public int Validaracceso(Connection con, String User, String Password) throws SQLException {  
   int retorno = 0; 
   try(PreparedStatement pstmt = con.prepareStatement("{call dbo.isvalidUser(?,?)}"); ) {  
 
@@ -98,5 +99,13 @@ public static int Validaracceso(Connection con, String User, String Password) th
   }
     return retorno;
 }
+
+public int vali(Statement s,String User, String Password){
+    int retorno = 0; 
+     //Statement s = cn.getConexion().createStatement();
+     return retorno;
+}
+
+
 
 }

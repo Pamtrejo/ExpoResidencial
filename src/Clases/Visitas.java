@@ -5,7 +5,7 @@
  */
 package Clases;
 
-import Formularios.Principal;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -150,7 +150,7 @@ public void cargarVisitas(){
            int numeroColumna = rsMd.getColumnCount();
            
            DefaultTableModel modelo = new DefaultTableModel();
-           Principal.tblVisitas.setModel(modelo);
+//           Principal.tblVisitas.setModel(modelo);
            for(int x=1;x<=numeroColumna; x++){
                modelo.addColumn(rsMd.getColumnLabel(x));
            }
